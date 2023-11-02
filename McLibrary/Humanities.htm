@@ -1,0 +1,157 @@
+Hello it's McOwino here
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedded Documents with Functions</title>
+</head>
+<body>
+    <h1>Embedded Documents Example</h1>
+    <div id="documentContainer"></div>
+
+    <script>
+        // Array to store information about each document
+        const documents = [
+            {
+                name: 'Document 1',
+                src: 'path/to/document1.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe1');
+                },
+                downloadFunction: function () {
+                    download('path/to/document1.pdf', 'document1.pdf');
+                }
+            },
+            {
+                name: 'Prince Indah',
+                src: '/Documents/Prince indah -Mama watoto.mp3',
+                readFunction: function () {
+                    scrollToTop('iframe2');
+                },
+                downloadFunction: function () {
+                    download('/Documents/Prince indah -Mama watoto.mp3', 'Prince Indah');
+                }
+            },
+            {
+                name: 'Document 3',
+                src: 'path/to/document3.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe3');
+                },
+                downloadFunction: function () {
+                    download('path/to/document3.pdf', 'document3.pdf');
+                }
+            },
+            {
+                name: 'Document 4',
+                src: 'path/to/document4.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe4');
+                },
+                downloadFunction: function () {
+                    download('path/to/document4.pdf', 'document4.pdf');
+                }
+            },
+            {
+                name: 'Document 5',
+                src: 'path/to/document5.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe5');
+                },
+                downloadFunction: function () {
+                    download('path/to/document5.pdf', 'document5.pdf');
+                }
+            },
+            {
+                name: 'Document 6',
+                src: 'path/to/document6.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe6');
+                },
+                downloadFunction: function () {
+                    download('path/to/document6.pdf', 'document6.pdf');
+                }
+            },
+            {
+                name: 'Document 7',
+                src: 'path/to/document7.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe7');
+                },
+                downloadFunction: function () {
+                    download('path/to/document7.pdf', 'document7.pdf');
+                }
+            },
+            {
+                name: 'Document 8',
+                src: 'path/to/document8.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe8');
+                },
+                downloadFunction: function () {
+                    download('path/to/document8.pdf', 'document8.pdf');
+                }
+            },
+            {
+                name: 'Document 9',
+                src: 'path/to/document9.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe9');
+                },
+                downloadFunction: function () {
+                    download('path/to/document9.pdf', 'document9.pdf');
+                }
+            },
+            {
+                name: 'Document 10',
+                src: 'path/to/document10.pdf',
+                readFunction: function () {
+                    scrollToTop('iframe10');
+                },
+                downloadFunction: function () {
+                    download('path/to/document10.pdf', 'document10.pdf');
+                }
+            },
+        ];
+
+        // Function to display the documents and buttons
+        function displayDocuments() {
+            const container = document.getElementById('documentContainer');
+            documents.forEach((document, index) => {
+                const iframeId = `iframe${index}`;
+                const iframe = `<iframe id="${iframeId}" src="${document.src}" width="400" height="200"></iframe>`;
+                const readButton = `<button onclick="documents[${index}].readFunction()">Read ${document.name}</button>`;
+                const downloadButton = `<button onclick="documents[${index}].downloadFunction()">Download ${document.name}</button>`;
+                container.innerHTML += `<div>${iframe}<br>${readButton}${downloadButton}</div>`;
+            });
+        }
+
+        // Function to scroll to the top of an iframe
+        function scrollToTop(iframeId) {
+            const iframe = document.getElementById(iframeId);
+            iframe.contentWindow.scrollTo(0, 0);
+        }
+
+        // Function to download a document
+        function download(src, filename) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = src;
+            downloadLink.download = filename;
+            downloadLink.addEventListener('load', function () {
+                displayDownloadStatus('Downloaded Successfully');
+            });
+            downloadLink.addEventListener('error', function () {
+                displayDownloadStatus('Download Failed');
+            });
+            downloadLink.click();
+        }
+
+        // Function to display download status
+        function displayDownloadStatus(message) {
+            alert(message);
+        }
+
+        // Call the function to display the documents
+        displayDocuments();
+    </script>
+</body>
+</html>
